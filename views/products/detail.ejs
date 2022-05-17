@@ -1,0 +1,15 @@
+<%- include('../partials/header.ejs') %>
+
+<div class="card">
+    <div class="card-header">
+        Product Detail
+    </div>
+    <div class="card-body">
+        <p class="card-text"><span class="badge rounded-pill text-bg-success"><%= product.category %> </span></p>
+        <h5 class="card-title"><%= product.name %> </h5>
+        <p class="card-text">$<%= product.price %> </p>
+        <a href="/products" class="btn btn-primary">Back</a>
+    </div>
+</div>
+
+<%- include('../partials/footer.ejs') %>

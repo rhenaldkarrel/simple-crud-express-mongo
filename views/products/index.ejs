@@ -1,0 +1,45 @@
+<%- include('../partials/header.ejs') %>
+
+<h3>All Products</h3>
+<a href="/products/new" class="btn btn-primary">Add New Product</a>
+<div class="row my-2">
+    <div class="col">
+        <p class="d-inline">Filter by:</p>
+        <% if(category !== 'All') { %>
+        <a href="/products" class="btn btn-outline-primary">All</a>
+        <% } %>
+        <a href="/products?category=fruit" class="btn btn-outline-primary">Fruit</a>
+        <a href="/products?category=vegetable" class="btn btn-outline-primary">Vegetable</a>
+        <a href="/products?category=dairy" class="btn btn-outline-primary">Dairy</a>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price ($)</th>
+            <th scope="col">Category</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% for( let i = 0; i < products.length; i++) { %>
+        <tr>
+            <th scope="row"><%= i+1 %> </th>
+            <td><%= products[i].name %> </td>
+            <td><%= products[i].price %></td>
+            <td class="text-capitalize"><%= products[i].category %></td>
+            <td>
+                <a href="/products/<%= products[i]._id %> " class="btn btn-primary">Detail</a>
+                <a href="/products/<%= products[i]._id %>/edit" class="btn btn-primary">Edit</a>
+                <form action="/products/<%= products[i]._id %>?_method=delete" method="post" class="d-inline">
+                    <button class="btn btn-danger" onclick="confirm('Are you sure?')">Delete</button>
+                </form>
+            </td>
+        </tr>
+        <% } %>
+    </tbody>
+</table>
+
+<%- include('../partials/footer.ejs') %>

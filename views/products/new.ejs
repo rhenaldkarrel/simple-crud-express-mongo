@@ -1,0 +1,27 @@
+<%- include('../partials/header.ejs') %>
+
+<a href="/products" class="btn btn-outline-dark mb-4">Back</a>
+<h3>Add New Product</h3>
+<form action="/products" method="post">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input type="text" class="form-control" name="name" id="name" placeholder="product name">
+    </div>
+    <div class="mb-3">
+        <label for="price" class="form-label">Price ($)</label>
+        <input type="number" class="form-control" name="price" placeholder="product price" id="price" min="0"
+            step="0.01">
+    </div>
+    <div class="mb-3">
+        <label for="category" class="form-label">Category</label>
+        <select class="form-select" aria-label="Default select example" name="category" id="category">
+            <option selected>Choose category</option>
+            <option value=" vegetable">Vegetable</option>
+            <option value="dairy">Dairy</option>
+            <option value="fruit">Fruit</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+<%- include('../partials/footer.ejs') %>
